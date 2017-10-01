@@ -19,7 +19,7 @@
 > 本人使用的是http-server。请使用npm安装。npm install -g http-server
 
 # 效果截图
-![截图]()
+![截图](https://raw.githubusercontent.com/zzhgithub/chat-demo/master/img/haha.png)
 # 文档教程
 
 # todolist
