@@ -8,6 +8,7 @@
 echo "Please enter your name:"; read USER
 echo "[$(date)] ${USER} joined the chat" >> chat.log
 echo "[$(date)] Welcome to the chat ${USER}!"
-# 注意这里
-tail -n 0 -f /Users/zhouzihao/mytmp/websocktd/chat.log &
-while read MSG; do echo "[$(date)] ${USER}> ${MSG}" >> chat.log; don
+# 注意这里 这里如果没有生效要改成自己的地址
+MYDIR=`pwd -L`
+tail -n 0 -f "${MYDIR}/chat.log" &
+while read MSG; do echo "[$(date)] ${USER}> ${MSG}" >> chat.log; done
