@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# 代码源自websocketd官方项目的demo我做了一些小的修改！每次发消息的时候也会显示回来~
+# 注意这是不需要的！我为了方便在这么做的。但是这加大了网络的io。正常做法是用js直接现在在页面里。
+# 这段代码只能跑在 可以使用这些命令的机器上 的服务器上。如果你使用的是windows请检查这个文件是否可以使用。
+# 或者我将在别的时间内。补充windows可用的版本
+
+echo "Please enter your name:"; read USER
+echo "[$(date)] ${USER} joined the chat" >> chat.log
+echo "[$(date)] Welcome to the chat ${USER}!"
+# 注意这里
+tail -n 0 -f /Users/zhouzihao/mytmp/websocktd/chat.log &
+while read MSG; do echo "[$(date)] ${USER}> ${MSG}" >> chat.log; don

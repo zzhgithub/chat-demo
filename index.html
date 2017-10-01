@@ -1,0 +1,44 @@
+<CTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>简单的聊天室</title>
+</head>
+<body>
+    <div id="content" >
+        <span>等待输出在开始通信</span>
+        <br>
+    </div>
+    <input type="text" id="input" />
+    <button type="submit" id="submit">发送</button>
+    <script>
+        //注意这里的地址 需要你进行修改！
+        var ws= new WebSocket('ws://zhouzihaodeMacBook-Pro.local:8080/');
+        var btn = document.getElementById("submit");
+        var text = document.getElementById("input");
+        var content = document.getElementById("content");
+
+        ws.addEventListener('message', function (event) {
+           console.log('Message from server ', event.data);
+           content.innerHTML += event.data+"<br>";
+        });
+        ws.onclose = function(event){
+            console.log('closed');
+        }
+
+        //给按钮添加监听事件然后发送消息
+        btn.onclick = function(){
+        //如果内容为空就不发送出来
+        if(text.value == ''){
+            //donothing
+        }else{
+            ws.send(text.value);
+            //吧刚刚发的消息 回显出来
+            console.log('send'+text.value);
+            text.value = '';
+        }
+    }
+</script>
+</body>
+</html>
